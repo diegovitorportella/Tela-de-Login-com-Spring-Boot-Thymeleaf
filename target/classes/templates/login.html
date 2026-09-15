@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,15 +16,28 @@
     <div class="login-form">
         <form th:action="@{/login}" method="post" class="login-form">
             <h4 class="login-title">Login</h4>
-            <input type="text" id="username" name="username" placeholder="Username" required>
+
+            <div th:if="${param.error}" style="color: #FF743C; text-align: center; margin-bottom: 15px; font-weight: bold;">
+                E-mail ou senha inválidos!
+            </div>
+            <div th:if="${param.registered}" style="color: #28a745; text-align: center; margin-bottom: 15px; font-weight: bold;">
+                Cadastro realizado com sucesso! Faça seu login.
+            </div>
+            <div th:if="${param.logout}" style="color: #81B1C3; text-align: center; margin-bottom: 15px; font-weight: bold;">
+                Você saiu do sistema de forma segura.
+            </div>
+
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>
+            
             <div class="login-button-container">
                 <button type="submit">Entrar</button>
             </div>
+            
             <p class="login-redirect-options">
                 Ainda não tem cadastro? <br>
-                <a href="/register">Cadastre-se</a> |
-                <a href="/recoverpassword">Esqueceu sua senha?</a>
+                <a th:href="@{/register}">Cadastre-se</a> |
+                <a th:href="@{/recoverpassword}">Esqueceu sua senha?</a>
             </p>
         </form>
     </div>
