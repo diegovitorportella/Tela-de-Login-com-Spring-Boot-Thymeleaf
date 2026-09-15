@@ -1,6 +1,6 @@
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\application\SecureLoginPUCApplication.java
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\config\SecurityConfig.java
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\config\UserConfig.java
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\controller\SecureLoginController.java
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\model\UserRegisterRequest.java
-C:\Users\Diego\OneDrive\Documentos\tela_de_login\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\service\EmailService.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\application\SecureLoginPUCApplication.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\config\SecurityConfig.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\config\UserConfig.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\controller\SecureLoginController.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\model\UserRegisterRequest.java
+C:\Users\manur\Downloads\Tela-de-Login-com-Spring-Boot-Thymeleaf\src\main\java\com\example\SecureLoginPUC\service\EmailService.java

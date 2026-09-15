@@ -1,16 +1,57 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Admin Page</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-</head>
 <body>
-<div class="container">
-    <h2>Admin Page</h2>
-    <p>Bem-vindo à área administrativa!</p>
-    <form  th:action="@{/logout}" method="post" style="margin-top: 20px;">
-        <button type="submit" class="home-btn">Sair</button>
-    </form>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>PUC Admin</h2>
+            <span>Controle do Sistema</span>
+        </div>
+
+        <nav>
+            <a href="#">Usuários</a>
+            <a href="#">Livros</a>
+            <a href="#">Relatórios</a>
+            <a href="#">Configurações</a>
+        </nav>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn">
+                Sair
+            </button>
+        </form>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="welcome-card">
+            <h1>Painel Administrativo</h1>
+            <p>Gerencie todo o sistema da biblioteca.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Usuários</h3>
+                <span>850</span>
+            </div>
+
+            <div class="card">
+                <h3>Livros</h3>
+                <span>1250</span>
+            </div>
+
+            <div class="card">
+                <h3>Pendências</h3>
+                <span>12</span>
+            </div>
+
+        </div>
+
+    </main>
+
 </div>
+
 </body>
-</html>

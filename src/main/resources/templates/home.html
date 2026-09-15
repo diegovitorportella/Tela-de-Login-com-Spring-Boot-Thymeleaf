@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="home-container">
-    <h2>Bem-vindo à página inicial!</h2>
-    <p class="home-message">Login realizado com sucesso.</p>
-    <form  th:action="@{/logout}" method="post" style="margin-top: 20px;">
-        <button type="submit" class="home-btn">Sair</button>
-    </form>
+<div class="dashboard-layout">
+
+    <div class="sidebar">
+        <h2>PUC Library</h2>
+
+        <a href="#">Dashboard</a>
+        <a href="#">Livros</a>
+        <a href="#">Empréstimos</a>
+        <a href="#">Perfil</a>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn">
+                Sair
+            </button>
+        </form>
+    </div>
+
+    <div class="content">
+
+        <div class="welcome-card">
+            <h1>Bem-vindo!</h1>
+            <p>Login realizado com sucesso.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Livros</h3>
+                <span>1.250</span>
+            </div>
+
+            <div class="card">
+                <h3>Usuários</h3>
+                <span>850</span>
+            </div>
+
+            <div class="card">
+                <h3>Empréstimos</h3>
+                <span>423</span>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
 </body>
 </html>
