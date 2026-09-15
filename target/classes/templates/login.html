@@ -1,117 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUC Library | Login</title>
-
-    <link rel="stylesheet" href="/css/login.css">
+    <!-- Adicionado th:href para garantir o carregamento do CSS pelo Spring -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
-
 <body>
-
 <div class="login-container">
-
     <div class="login-image-logo-container">
         <img th:src="@{/images/apc-login-bg.png}" alt="PUC Library">
-
         <div class="hero-content">
             <h1>PUC Library</h1>
-
             <p>
                 Plataforma moderna para gerenciamento
                 acadêmico e bibliotecário.
             </p>
         </div>
     </div>
-
     <div class="login-form">
-
         <form th:action="@{/login}" method="post">
-
             <h2 class="login-title">
                 Bem-vindo
             </h2>
-
             <p class="login-subtitle">
                 Entre com suas credenciais para continuar
             </p>
 
-            <div class="input-group">
+            <!-- Mensagens do Spring Security adicionadas -->
+            <div th:if="${param.registered}" style="color: #3b82f6; text-align: center; margin-bottom: 15px; font-weight: bold;">Cadastro realizado com sucesso! Faça seu login.</div>
+            <div th:if="${param.error}" style="color: #ff6b6b; text-align: center; margin-bottom: 15px; font-weight: bold;">E-mail ou senha inválidos.</div>
+            <div th:if="${param.logout}" style="color: #3b82f6; text-align: center; margin-bottom: 15px; font-weight: bold;">Sessão encerrada com segurança.</div>
 
+            <div class="input-group">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/>
                     <path d="m22 6-10 7L2 6"/>
                 </svg>
-
+                <!-- O name foi alterado de username para email -->
                 <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="Usuário ou E-mail"
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="E-mail"
                         required>
             </div>
-
             <div class="input-group">
-
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="11" width="18" height="10" rx="2"/>
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 </svg>
-
                 <input
                         type="password"
                         id="password"
                         name="password"
                         placeholder="Senha"
                         required>
-
                 <button
                         type="button"
                         class="toggle-password"
                         onclick="togglePassword(this)">
-
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/>
                         <circle cx="12" cy="12" r="3"/>
                     </svg>
-
                 </button>
-
             </div>
-
             <div class="login-button-container">
                 <button type="submit">
                     Entrar
                 </button>
             </div>
-
             <div class="separator">
                 <span>PUC Minas</span>
             </div>
-
             <p class="login-redirect-options">
                 Não possui uma conta?
-                <a href="/register">Cadastre-se</a>
+                <!-- Adicionado th:href -->
+                <a th:href="@{/register}">Cadastre-se</a>
             </p>
-
             <p class="login-redirect-options">
-                <a href="/recoverpassword">
+                <!-- Adicionado th:href -->
+                <a th:href="@{/recoverpassword}">
                     Esqueceu sua senha?
                 </a>
             </p>
-
         </form>
-
     </div>
-
 </div>
-
 <script>
     function togglePassword(btn) {
         const input = btn.previousElementSibling;
-
         if (input.type === "password") {
             input.type = "text";
         } else {
@@ -119,6 +99,5 @@
         }
     }
 </script>
-
 </body>
 </html>

@@ -1,78 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-
     <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
-
 <body>
-
 <div class="register-container">
-
     <div class="register-image-logo-container">
-
         <img th:src="@{/images/apc-login-bg.png}" alt="PUC Library">
-
         <div class="hero-content">
             <h1>PUC Library</h1>
             <p>
                 Crie sua conta e tenha acesso ao sistema.
             </p>
         </div>
-
     </div>
-
     <div class="register-form">
-
         <div class="register-header">
-
             <h1>Crie sua Conta</h1>
-
             <p>
                 Preencha seus dados para continuar.
             </p>
-
         </div>
 
-        <form th:action="@{/register}" method="post">
+        <!-- Mensagem de Erro do Backend adicionada -->
+        <div th:if="${error}" style="color: #ff6b6b; text-align: center; margin-bottom: 15px; font-weight: bold;" th:text="${error}"></div>
 
+        <form th:action="@{/register}" method="post">
             <div class="input-group">
                 <input type="text" name="nome" placeholder="Nome completo" required>
             </div>
-
             <div class="input-group">
                 <input type="email" name="email" placeholder="E-mail" required>
             </div>
-
             <div class="input-group">
                 <input type="text" name="cpf" placeholder="CPF" required>
             </div>
-
             <div class="input-group">
                 <input type="text" name="rg" placeholder="RG" required>
             </div>
-
             <div class="input-group full">
                 <input type="text" name="endereco" placeholder="Endereço" required>
             </div>
-
             <div class="input-group full">
                 <input type="text" name="instituicao" placeholder="Instituição" required>
             </div>
-
             <div class="input-group full">
-
                 <input
                         type="password"
                         id="senha"
                         name="senha"
                         placeholder="Senha"
                         required>
-
+            </div>
+            
+            <!-- Campo de confirmação adicionado -->
+            <div class="input-group full">
+                <input
+                        type="password"
+                        id="confirmacaoSenha"
+                        name="confirmacaoSenha"
+                        placeholder="Confirme a Senha"
+                        required>
             </div>
 
             <div class="register-button-container">
@@ -80,19 +71,14 @@
                     Registrar
                 </button>
             </div>
-
             <div class="register-redirect-options">
                 Já possui conta?
                 <a th:href="@{/login}">
                     Fazer Login
                 </a>
             </div>
-
         </form>
-
     </div>
-
 </div>
-
 </body>
 </html>
