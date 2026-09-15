@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
+
 <body>
 <div class="register-container">
     <div class="register-image-logo-container">
         <img th:src="@{/images/apc-login-bg.png}" alt="Logo PUC Minas">
     </div>
-
     <div class="register-form">
         <h2 class="register-title">Crie sua conta</h2>
+        
+        <!-- Bloco para exibir erros do Controller (ex: senhas divergentes, e-mail duplicado) -->
+        <div th:if="${error}" style="color: red; margin-bottom: 15px; text-align: center; font-weight: bold;" th:text="${error}"></div>
 
         <form th:action="@{/register}" method="post">
             <input type="text" name="nome" placeholder="Nome completo" required>
@@ -21,17 +27,19 @@
             <input type="text" name="endereco" placeholder="Endereço" required>
             <input type="text" name="instituicao" placeholder="Instituição" required>
             <input type="password" name="senha" placeholder="Senha" required>
-            <input type="password" name="confirmacaoSenha" placeholder="Confirme sua senha" required>
-
+            
+            <!-- Campo de confirmação de senha essencial para a validação do backend -->
+            <input type="password" name="confirmacaoSenha" placeholder="Confirme a Senha" required>
+            
             <div class="register-button-container">
                 <button type="submit">Registrar</button>
             </div>
         </form>
-
         <div class="register-redirect-options">
             Já possui conta? <a th:href="@{/login}">Faça login</a>
         </div>
     </div>
 </div>
 </body>
+
 </html>

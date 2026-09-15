@@ -14,26 +14,29 @@
         <img th:src="@{/images/apc-login-bg.png}" alt="Logo PUC Minas">
     </div>
     <div class="login-form">
+        
+        <!-- Mensagem de Sucesso (Após Cadastro) -->
+        <div th:if="${param.registered}" style="color: green; margin-bottom: 15px; text-align: center; font-weight: bold;">
+            Cadastro realizado com sucesso! Faça seu login.
+        </div>
+
+        <!-- Mensagem de Erro (Credenciais Inválidas do Spring Security) -->
+        <div th:if="${param.error}" style="color: red; margin-bottom: 15px; text-align: center; font-weight: bold;">
+            E-mail ou senha inválidos.
+        </div>
+
+        <!-- Mensagem de Logout -->
+        <div th:if="${param.logout}" style="color: #81B1C3; margin-bottom: 15px; text-align: center; font-weight: bold;">
+            Sessão encerrada com segurança.
+        </div>
+
         <form th:action="@{/login}" method="post" class="login-form">
             <h4 class="login-title">Login</h4>
-
-            <div th:if="${param.error}" style="color: #FF743C; text-align: center; margin-bottom: 15px; font-weight: bold;">
-                E-mail ou senha inválidos!
-            </div>
-            <div th:if="${param.registered}" style="color: #28a745; text-align: center; margin-bottom: 15px; font-weight: bold;">
-                Cadastro realizado com sucesso! Faça seu login.
-            </div>
-            <div th:if="${param.logout}" style="color: #81B1C3; text-align: center; margin-bottom: 15px; font-weight: bold;">
-                Você saiu do sistema de forma segura.
-            </div>
-
             <input type="email" id="email" name="email" placeholder="E-mail" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>
-            
             <div class="login-button-container">
                 <button type="submit">Entrar</button>
             </div>
-            
             <p class="login-redirect-options">
                 Ainda não tem cadastro? <br>
                 <a th:href="@{/register}">Cadastre-se</a> |
