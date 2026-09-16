@@ -1,158 +1,34 @@
-# Projeto SecureLoginPUC
+# 🔐 Secure Login PUC - Atividade 02
 
-## Descrição
-O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de login seguro utilizando Spring Boot e Spring Security. O objetivo é permitir a autenticação de usuários, diferenciando entre usuários comuns e administradores, e garantindo o acesso apropriado às páginas da aplicação.
+Aplicação web desenvolvida com **Spring Boot** e **Thymeleaf**, implementando um sistema completo de autenticação e cadastro de usuários, incluindo envio de e-mails para recuperação de senha.
 
-## Estrutura do Projeto
+Projeto desenvolvido para a disciplina de Desenvolvimento e Integração de Aplicações Web da PUC Minas.
 
-```
-SecureLoginPUC
-│
-├── src
-│   └── main
-│       ├── java
-│       │   └── com.example.SecureLoginPUC
-│       │       ├── application
-│       │       │   └── SecureLoginPUCApplication.java
-│       │       ├── config
-│       │       │   ├── SecurityConfig.java
-│       │       │   └── UserConfig.java
-│       │       └── controller
-│       │           └── SecureLoginPUCController.java
-│       └── resources
-│           ├── application.properties
-│           ├── static
-│           │   ├── css
-│           │   │   ├── login.css
-│           │   │   ├── register.css
-│           │   │   └── style.css
-│           │   └── images
-│           │       ├── apc-login-bg.png
-│           │       └── logo-puc-minas.jpg
-│           └── templates
-│               ├── admin.html
-│               ├── error.html
-│               ├── home.html
-│               ├── login.html
-│               ├── recoverpassword.html
-│               └── register.html
+## 👥 Equipe (Pair Programming)
+* Diego Vitor Pinto Mariano Portella
+* Manoel Rodrigues Bezerra Neto
 
-```
+## 🚀 Tecnologias Utilizadas
+* Java + Spring Boot
+* Spring Security (Autenticação em Memória e BCrypt)
+* Thymeleaf
+* Java Mail Sender (SMTP)
+* HTML5, CSS3 
 
-## Configuração do application.properties
+## 🌐 Endpoints Disponíveis
 
-```properties
-spring.application.name=SecureLoginPUC
-app.user.username=joao
-app.user.password=4321
-app.admin.username=admin
-app.admin.password=1234
-```
+| Método | Endpoint           | Descrição                                      | Público |
+| ------ | ------------------ | ---------------------------------------------- | ------- |
+| `GET`  | `/login`           | Exibe a tela de login                          | Sim     |
+| `GET`  | `/register`        | Exibe a tela de cadastro                       | Sim     |
+| `POST` | `/register`        | Processa os dados do cadastro                  | Sim     |
+| `GET`  | `/recoverpassword` | Exibe a tela de recuperação de senha           | Sim     |
+| `POST` | `/recoverpassword` | Processa a solicitação e envia e-mail          | Sim     |
+| `GET`  | `/home`            | Dashboard do usuário logado                    | Não     |
+| `GET`  | `/admin`           | Painel administrativo exclusivo (Role: ADMIN)  | Não     |
+| `POST` | `/logout`          | Encerra a sessão atual                         | Não     |
 
-## Dependências
-```xml
-<!-- Dependência do Spring Boot Test -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-</dependency>
+### Pré-requisitos
+* Java JDK 17 ou superior
+* Maven instalado (ou utilize o `mvnw` incluso no projeto)
 
-<!-- Dependência do Spring Security -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-
-<!-- Dependência do Thymeleaf para o Spring Boot -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
-```
-
-# Thymeleaf
-
-Thymeleaf é um motor de templates para Java que permite a criação de páginas HTML dinâmicas de forma simples e eficiente. Ele é frequentemente utilizado em aplicações Spring, proporcionando uma maneira intuitiva de gerar conteúdo HTML e manipular dados diretamente nas páginas.
-
-## Principais Características
-
-- **Natural Templating**: Os templates Thymeleaf são válidos como documentos HTML, permitindo que sejam visualizados em navegadores sem processamento.
-- **Integração com Spring**: Thymeleaf se integra perfeitamente com o Spring Framework, facilitando a injeção de dependências e o acesso a beans do Spring.
-- **Expressões de Template**: Utiliza uma sintaxe simples e expressiva para manipular dados, permitindo a criação de lógicas condicionais e loops diretamente nas páginas.
-
-## Exemplo de Uso
-
-Aqui está um exemplo simples de um template Thymeleaf:
-
-```html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Exemplo Thymeleaf</title>
-</head>
-<body>
-    <h1 th:text="${titulo}">Título do Documento</h1>
-    <ul>
-        <li th:each="item : ${itens}" th:text="${item}"></li>
-    </ul>
-</body>
-</html>
-```
-
-Neste exemplo, o título e a lista de itens são preenchidos dinamicamente com dados fornecidos pelo controlador Spring.
-
-Thymeleaf é uma escolha poderosa para desenvolvedores que desejam criar interfaces web dinâmicas e interativas em aplicações Java. Com sua sintaxe intuitiva e forte integração com o Spring, ele se tornou uma ferramenta popular no ecossistema de desenvolvimento Java.
-
-## Interface Gráfica
-
-A interface gráfica permite ao usuário inserir seus dados de login e, após a autenticação, ser redirecionado para a página correspondente, onde terá acesso às funcionalidades e informações de acordo com suas credenciais.
-
-### Captura de Tela
-
-- **Login**: A página de login possui campos para inserir o nome de usuário e a senha. Ela  também exibe o logo da PUC Minas, proporcionando uma identificação visual clara da instituição. Abaixo do formulário de login, existem links para os usuários que ainda não possuem cadastro, direcionando-os para a página de registro, e para aqueles que esqueceram a senha, levando-os à página de recuperação de senha.
-
-- **Register**: A página de registro permite que novos usuários criem uma conta na plataforma. Ela inclui campos para inserir **nome completo, e-mail, CPF, RG, endereço, instituição e senha**, garantindo que todas as informações necessárias para cadastro sejam coletadas. A lateral exibe o **logo da PUC Minas**, mantendo a identidade visual da instituição. Abaixo do formulário, há um link para os usuários que já possuem conta, direcionando-os de volta para a página de login.
-
-| <img src="https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_2/imgs/Login.png" alt="Login" width="1000"/> |
-|:----------------------------------------------------:|
-|                        Login                         |
-
-| <img src="https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_2/imgs/Register.png" alt="Register" width="1000"/> |
-|:-------------------------------------------------------:|
-|                        Register                         |
-
-## Métodos da Classe SecurityConfig
-
-### @Configuration
-Indica que a classe contém métodos de configuração que geram beans para o contexto da aplicação.
-
-### @EnableWebSecurity
-Ativa a segurança da web, permitindo a configuração de regras de segurança para as URLs da aplicação.
-
-### public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
-Configura as regras de segurança das requisições HTTP, permitindo o acesso público às páginas de login e arquivos CSS, restringindo o acesso às páginas do administrador.
-
-### public UserDetailsService userDetailsService()
-Configura o gerenciamento de usuários em memória, criando um usuário comum e um administrador, codificando as senhas.
-
-### public PasswordEncoder passwordEncoder()
-Define o codificador de senhas a ser utilizado na aplicação, utilizando o BCryptPasswordEncoder.
-
-## Urls do projeto:
-http://localhost:8080/login
-
-http://localhost:8080/login?logout=true
-
-http://localhost:8080/home
-
-http://localhost:8080/admin
-
-http://localhost:8080/error
-
-http://localhost:8080/register
-
-http://localhost:8080/recoverpassword
-
-## Licença
-Este projeto está licenciado sob a MIT License.
